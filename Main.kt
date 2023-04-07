@@ -1,15 +1,16 @@
 fun main() {
-    val secret = "test"
-    val currentUserWord = (underscore + separator).repeat(secret.length).dropLast(1)
-    val guess = "e"
+    val secret: String = "test"
+    val currentUserWord: String = (underscore + separator).repeat(secret.length).dropLast(1)
+    val guess: Char = 'e'
     val newUserWord = generateNewUserWord(secret, guess, currentUserWord)
     println(newUserWord)
 }
 
 fun generateNewUserWord(
     secret: String,
-    guess: String,
-    currentUserWord: String): String {
+    guess: Char,
+    currentUserWord: String)
+: String {
     val newUserWord = currentUserWord.toCharArray()
     // params:
     // secret = the secret word,
@@ -18,14 +19,17 @@ fun generateNewUserWord(
     // function: generates a new sequence of 
     //  underscores and already guessed letters
     for (i in secret.indices) {
-        if (secret[i] == guess[0]) {
-            newUserWord[i * 2] = guess[0]
+        if (secret[i] == guess) {
+            newUserWord[i * 2] = guess
         }
     }
     return String(newUserWord)
 }
 
-fun isComplete() {
+fun isComplete(
+    secret: String,
+    currentUserWord: String)
+: Boolean {
     // checks if the game is complete
     TODO()
 }
